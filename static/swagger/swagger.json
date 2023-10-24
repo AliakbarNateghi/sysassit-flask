@@ -1,0 +1,890 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "component API",
+    "version": "1.0.0",
+    "description": "API for managing Bills of Materials (components)"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/api"
+    }
+  ],
+  "paths": {
+    "/component/{component_id}": {
+      "put": {
+        "tags": [
+          "component"
+        ],
+        "summary": "Update a component",
+        "description": "Updates an existing component in the database and in an Excel file.",
+        "parameters": [
+          {
+            "name": "component_id",
+            "in": "path",
+            "description": "ID of the component to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New values for the component",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "section": {
+                    "type": "string",
+                    "description": "The section of the component"
+                  },
+                  "sub-section": {
+                    "type": "string",
+                    "description": "The sub-section of the component"
+                  },
+                  "level": {
+                    "type": "string",
+                    "description": "The level of the component"
+                  },
+                  "TCode": {
+                    "type": "string",
+                    "description": "The T-code of the component"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "The code of the component"
+                  },
+                  "Parent": {
+                    "type": "string",
+                    "description": "The parent code of the component"
+                  },
+                  "module": {
+                    "type": "boolean",
+                    "description": "Whether the component is a module or not"
+                  },
+                  "repeated": {
+                    "type": "boolean",
+                    "description": "Whether the component is repeated or not"
+                  },
+                  "condition": {
+                    "type": "string",
+                    "description": "The condition of the component"
+                  },
+                  "fig": {
+                    "type": "string",
+                    "description": "The figure of the component"
+                  },
+                  "position": {
+                    "type": "string",
+                    "description": "The position of the component"
+                  },
+                  "part": {
+                    "type": "string",
+                    "description": "The part number of the component"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "description": "The quantity of the component"
+                  },
+                  "standard": {
+                    "type": "string",
+                    "description": "The standard of the component"
+                  },
+                  "national_stock_number": {
+                    "type": "string",
+                    "description": "The national stock number of the component"
+                  },
+                  "part_number": {
+                    "type": "string",
+                    "description": "The part number of the component"
+                  },
+                  "ATA_number": {
+                    "type": "string",
+                    "description": "The ATA number of the component"
+                  },
+                  "weight_on_pcs": {
+                    "type": "number",
+                    "description": "The weight/pcs of the component"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "description": "The weight of the component"
+                  },
+                  "version": {
+                    "type": "number",
+                    "description": "The version of the component"
+                  },
+                  "sap_code": {
+                    "type": "number",
+                    "description": "The sap code of the component"
+                  },
+                  "head_of_CVE": {
+                    "type": "number",
+                    "description": "The head of cve of the component"
+                  },
+                  "CP": {
+                    "type": "boolean",
+                    "description": "The cp of the component"
+                  },
+                  "CCL": {
+                    "type": "boolean",
+                    "description": "The ccl of the component"
+                  },
+                  "drawing_lvl_2": {
+                    "type": "boolean",
+                    "description": "The drawing level 2 of the component"
+                  },
+                  "ITP_and_SPc_of_material": {
+                    "type": "boolean",
+                    "description": "The ITP and SPc of material of the component"
+                  },
+                  "ITP_and_SPC_of_production_technology": {
+                    "type": "boolean",
+                    "description": "The ITP and SPC of production technology of the component"
+                  },
+                  "type_of_analysis": {
+                    "type": "boolean",
+                    "description": "The type of analysis of the component"
+                  },
+                  "prototype_part": {
+                    "type": "boolean",
+                    "description": "The prototype of the component"
+                  },
+                  "test": {
+                    "type": "boolean",
+                    "description": "The test of the component"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "component"
+        ],
+        "summary": "Shows a component",
+        "description": "Shows an existing component in the database using its id.",
+        "parameters": [
+          {
+            "name": "component_id",
+            "in": "path",
+            "description": "ID of the component to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New values for the component",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "section": {
+                    "type": "string",
+                    "description": "The section of the component"
+                  },
+                  "sub-section": {
+                    "type": "string",
+                    "description": "The sub-section of the component"
+                  },
+                  "level": {
+                    "type": "string",
+                    "description": "The level of the component"
+                  },
+                  "TCode": {
+                    "type": "string",
+                    "description": "The T-code of the component"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "The code of the component"
+                  },
+                  "Parent": {
+                    "type": "string",
+                    "description": "The parent code of the component"
+                  },
+                  "module": {
+                    "type": "boolean",
+                    "description": "Whether the component is a module or not"
+                  },
+                  "repeated": {
+                    "type": "boolean",
+                    "description": "Whether the component is repeated or not"
+                  },
+                  "condition": {
+                    "type": "string",
+                    "description": "The condition of the component"
+                  },
+                  "fig": {
+                    "type": "string",
+                    "description": "The figure of the component"
+                  },
+                  "position": {
+                    "type": "string",
+                    "description": "The position of the component"
+                  },
+                  "part": {
+                    "type": "string",
+                    "description": "The part number of the component"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "description": "The quantity of the component"
+                  },
+                  "standard": {
+                    "type": "string",
+                    "description": "The standard of the component"
+                  },
+                  "national_stock_number": {
+                    "type": "string",
+                    "description": "The national stock number of the component"
+                  },
+                  "part_number": {
+                    "type": "string",
+                    "description": "The part number of the component"
+                  },
+                  "ATA_number": {
+                    "type": "string",
+                    "description": "The ATA number of the component"
+                  },
+                  "weight_on_pcs": {
+                    "type": "number",
+                    "description": "The weight/pcs of the component"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "description": "The weight of the component"
+                  },
+                  "version": {
+                    "type": "number",
+                    "description": "The version of the component"
+                  },
+                  "sap_code": {
+                    "type": "number",
+                    "description": "The sap code of the component"
+                  },
+                  "head_of_CVE": {
+                    "type": "number",
+                    "description": "The head of cve of the component"
+                  },
+                  "CP": {
+                    "type": "boolean",
+                    "description": "The cp of the component"
+                  },
+                  "CCL": {
+                    "type": "boolean",
+                    "description": "The ccl of the component"
+                  },
+                  "drawing_lvl_2": {
+                    "type": "boolean",
+                    "description": "The drawing level 2 of the component"
+                  },
+                  "ITP_and_SPc_of_material": {
+                    "type": "boolean",
+                    "description": "The ITP and SPc of material of the component"
+                  },
+                  "ITP_and_SPC_of_production_technology": {
+                    "type": "boolean",
+                    "description": "The ITP and SPC of production technology of the component"
+                  },
+                  "type_of_analysis": {
+                    "type": "boolean",
+                    "description": "The type of analysis of the component"
+                  },
+                  "prototype_part": {
+                    "type": "boolean",
+                    "description": "The prototype of the component"
+                  },
+                  "test": {
+                    "type": "boolean",
+                    "description": "The test of the component"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/component/": {
+        "put": {
+            "tags": [
+                "component"
+            ],
+            "summary": "Create a new component",
+            "description": "Creates a new component in the database and in an Excel file.",
+            "parameters": [
+
+            ],
+            "requestBody": {
+                "description": "New values for the component",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "section": {
+                                    "type": "string",
+                                    "description": "The section of the component"
+                                },
+                                "sub-section": {
+                                    "type": "string",
+                                    "description": "The sub-section of the component"
+                                },
+                                "level": {
+                                    "type": "string",
+                                    "description": "The level of the component"
+                                },
+                                "TCode": {
+                                    "type": "string",
+                                    "description": "The T-code of the component"
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "description": "The code of the component"
+                                },
+                                "Parent": {
+                                    "type": "string",
+                                    "description": "The parent code of the component"
+                                },
+                                "module": {
+                                    "type": "boolean",
+                                    "description": "Whether the component is a module or not"
+                                },
+                                "repeated": {
+                                    "type": "boolean",
+                                    "description": "Whether the component is repeated or not"
+                                },
+                                "condition": {
+                                    "type": "string",
+                                    "description": "The condition of the component"
+                                },
+                                "fig": {
+                                    "type": "string",
+                                    "description": "The figure of the component"
+                                },
+                                "position": {
+                                    "type": "string",
+                                    "description": "The position of the component"
+                                },
+                                "part": {
+                                    "type": "string",
+                                    "description": "The part number of the component"
+                                },
+                                "quantity": {
+                                    "type": "integer",
+                                    "description": "The quantity of the component"
+                                },
+                                "standard": {
+                                    "type": "string",
+                                    "description": "The standard of the component"
+                                },
+                                "national_stock_number": {
+                                    "type": "string",
+                                    "description": "The national stock number of the component"
+                                },
+                                "part_number": {
+                                    "type": "string",
+                                    "description": "The part number of the component"
+                                },
+                                "ATA_number": {
+                                    "type": "string",
+                                    "description": "The ATA number of the component"
+                                },
+                                "weight_on_pcs": {
+                                    "type": "number",
+                                    "description": "The weight/pcs of the component"
+                                },
+                                "weight": {
+                                    "type": "number",
+                                    "description": "The weight of the component"
+                                },
+                                "version": {
+                                    "type": "number",
+                                    "description": "The version of the component"
+                                },
+                                "sap_code": {
+                                    "type": "number",
+                                    "description": "The sap code of the component"
+                                },
+                                "head_of_CVE": {
+                                    "type": "number",
+                                    "description": "The head of cve of the component"
+                                },
+                                "CP": {
+                                    "type": "boolean",
+                                    "description": "The cp of the component"
+                                },
+                                "CCL": {
+                                    "type": "boolean",
+                                    "description": "The ccl of the component"
+                                },
+                                "drawing_lvl_2": {
+                                    "type": "boolean",
+                                    "description": "The drawing level 2 of the component"
+                                },
+                                "ITP_and_SPc_of_material": {
+                                    "type": "boolean",
+                                    "description": "The ITP and SPc of material of the component"
+                                },
+                                "ITP_and_SPC_of_production_technology": {
+                                    "type": "boolean",
+                                    "description": "The ITP and SPC of production technology of the component"
+                                },
+                                "type_of_analysis": {
+                                    "type": "boolean",
+                                    "description": "The type of analysis of the component"
+                                },
+                                "prototype_part": {
+                                    "type": "boolean",
+                                    "description": "The prototype of the component"
+                                },
+                                "test": {
+                                    "type": "boolean",
+                                    "description": "The test of the component"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "get": {
+            "tags": [
+                "component"
+            ],
+            "summary": "Getting all the components",
+            "description": "Shows all components stored in the database.",
+            "parameters": [
+
+            ],
+            "requestBody": {
+                "description": "Shows the components",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "section": {
+                                    "type": "string",
+                                    "description": "The section of the component"
+                                },
+                                "sub-section": {
+                                    "type": "string",
+                                    "description": "The sub-section of the component"
+                                },
+                                "level": {
+                                    "type": "string",
+                                    "description": "The level of the component"
+                                },
+                                "TCode": {
+                                    "type": "string",
+                                    "description": "The T-code of the component"
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "description": "The code of the component"
+                                },
+                                "Parent": {
+                                    "type": "string",
+                                    "description": "The parent code of the component"
+                                },
+                                "module": {
+                                    "type": "boolean",
+                                    "description": "Whether the component is a module or not"
+                                },
+                                "repeated": {
+                                    "type": "boolean",
+                                    "description": "Whether the component is repeated or not"
+                                },
+                                "condition": {
+                                    "type": "string",
+                                    "description": "The condition of the component"
+                                },
+                                "fig": {
+                                    "type": "string",
+                                    "description": "The figure of the component"
+                                },
+                                "position": {
+                                    "type": "string",
+                                    "description": "The position of the component"
+                                },
+                                "part": {
+                                    "type": "string",
+                                    "description": "The part number of the component"
+                                },
+                                "quantity": {
+                                    "type": "integer",
+                                    "description": "The quantity of the component"
+                                },
+                                "standard": {
+                                    "type": "string",
+                                    "description": "The standard of the component"
+                                },
+                                "national_stock_number": {
+                                    "type": "string",
+                                    "description": "The national stock number of the component"
+                                },
+                                "part_number": {
+                                    "type": "string",
+                                    "description": "The part number of the component"
+                                },
+                                "ATA_number": {
+                                    "type": "string",
+                                    "description": "The ATA number of the component"
+                                },
+                                "weight_on_pcs": {
+                                    "type": "number",
+                                    "description": "The weight/pcs of the component"
+                                },
+                                "weight": {
+                                    "type": "number",
+                                    "description": "The weight of the component"
+                                },
+                                "version": {
+                                    "type": "number",
+                                    "description": "The version of the component"
+                                },
+                                "sap_code": {
+                                    "type": "number",
+                                    "description": "The sap code of the component"
+                                },
+                                "head_of_CVE": {
+                                    "type": "number",
+                                    "description": "The head of cve of the component"
+                                },
+                                "CP": {
+                                    "type": "boolean",
+                                    "description": "The cp of the component"
+                                },
+                                "CCL": {
+                                    "type": "boolean",
+                                    "description": "The ccl of the component"
+                                },
+                                "drawing_lvl_2": {
+                                    "type": "boolean",
+                                    "description": "The drawing level 2 of the component"
+                                },
+                                "ITP_and_SPc_of_material": {
+                                    "type": "boolean",
+                                    "description": "The ITP and SPc of material of the component"
+                                },
+                                "ITP_and_SPC_of_production_technology": {
+                                    "type": "boolean",
+                                    "description": "The ITP and SPC of production technology of the component"
+                                },
+                                "type_of_analysis": {
+                                    "type": "boolean",
+                                    "description": "The type of analysis of the component"
+                                },
+                                "prototype_part": {
+                                    "type": "boolean",
+                                    "description": "The prototype of the component"
+                                },
+                                "test": {
+                                    "type": "boolean",
+                                    "description": "The test of the component"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/logs": {
+      "get": {
+        "tags": [
+          "logs"
+        ],
+        "summary": "Get logs of all components",
+        "description": "Returns a list of logs",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of logs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user_name": {
+                    "type": "string"
+                  },
+                  "user_email": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_fields": {
+                    "type": "string"
+                  },
+                  "old_value": {
+                    "type": "json"
+                  },
+                  "new_value": {
+                    "type": "json"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - User not logged in"
+          }
+        }
+      }
+    },
+    "/logs/{component_id}":{
+      "get": {
+        "tags": [
+          "logs"
+        ],
+        "summary": "Get logs of a component",
+        "description": "Returns a list of logs of one component",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of logs related to only one specific component",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user_name": {
+                    "type": "string"
+                  },
+                  "user_email": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_fields": {
+                    "type": "string"
+                  },
+                  "old_value": {
+                    "type": "json"
+                  },
+                  "new_value": {
+                    "type": "json"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - User not logged in"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "login"
+        ],
+        "summary": "login api of the app",
+        "description": "Returns a user information and access token",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "user information and access token",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "access": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/state/{component_id}": {
+      "post": {
+        "tags": [
+          "state"
+        ],
+        "summary": "states of a component",
+        "description": "Can perform action of changing a component state",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "owner and note of the state",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - User not logged in"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "state"
+        ],
+        "summary": "state of a component",
+        "description": "Can perform action of seeing a component state",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "owner and note of the state",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  },
+                  "component_id": {
+                    "type": "integer"
+                  },
+                  "state": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - User not logged in"
+          }
+        }
+      }
+    },
+    "/state": {
+      "get": {
+        "tags": [
+          "state"
+        ],
+        "summary": "states of all components",
+        "description": "Can perform action of seeing all components states",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "owner and note of the state",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  },
+                  "component_id": {
+                    "type": "integer"
+                  },
+                  "state": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - User not logged in"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "current user information",
+        "description": "Can perform action of seeing current user information base on authorization access token",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "username and email",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - User not logged in"
+          }
+        }
+      }
+    }
+  }
+}
